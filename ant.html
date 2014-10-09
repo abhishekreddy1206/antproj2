@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+<title>Ant Project 2</title>
+<style type="text/css">
+
+.grid {
+    border:2px solid black;
+}
+
+.cell {
+    width:20px;
+    height:20px;
+    padding:0px;
+    border-top:1px solid white;
+    border-left:1px solid white;
+}
+
+.top .cell {
+    border-top:0px;
+}
+
+.cell.left {
+    border-left:0px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>ANT - <em>A</em>NT is <em>N</em>ot <em>T</em>etris</h1>
+<h2>Instructions:</h2>
+<ul>
+<li>Movement/Rotation: Arrow keys or vi/vim movement keys</li>
+<li>Drop: Space bar</li>
+</ul>
+
+<table id="statWrapper" style="float:left;width:150px;">
+<tr><th>Level:</th><td id="levelWrapper"></td></tr>
+<tr><th>Lines:</th><td id="linesWrapper"></td></tr>
+<tr><th>Score:</th><td id="scoreWrapper"></td></tr>
+</table>
+
+<div id="gridWrapper" style="margin-left:150px;"></div>
+
+<script type="text/javascript" src="piece.js"></script>
+<script type="text/javascript" src="grid.js"></script>
+<script type="text/javascript" src="game.js"></script>
+
+<script type="text/javascript">
+// <![CDATA[
+
+var levelWrapper = document.getElementById('levelWrapper');
+var linesWrapper = document.getElementById('linesWrapper');
+var scoreWrapper = document.getElementById('scoreWrapper');
+var gridWrapper = document.getElementById('gridWrapper');
+var game = new Game();
+game.appendLevelTo(levelWrapper);
+game.appendLinesTo(linesWrapper);
+game.appendScoreTo(scoreWrapper);
+game.appendGridTo(gridWrapper);
+game.start();
+
+// ]]>
+</script>
+
+<div id="log" style="clear:left;">
+</div>
+
+<!--[if lte IE 8]>
+<script type="text/javascript">
+/* simple and failsafe internet explorer detection */
+window.isIE = true;
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+// <![CDATA[
+
+function log(str) {
+    var log = document.getElementById('log');
+    log.innerHTML += str;
+}
+
+function logln(str) {
+    log(str + '<br />');
+}
+
+// ]]>
+</script>
